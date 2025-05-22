@@ -3,6 +3,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import com.google.gson.Gson;
+
 public class Weather {
     public static void main(String[] args) {
         String apiKey="3ded9ce118161964953ca399889a5d1f";
@@ -27,7 +29,13 @@ public class Weather {
                 }
                 in.close();
                 System.out.println("날씨 정보!");
-                System.out.println(response.toString());
+
+                Gson gson = new Gson();
+                WeatherResponse result=gson.fromJson(response.toString(), WeatherResponse.class);
+
+                System.out.println("도시: "+result.name);
+                System.out.println("날씨: "+result.weather.get(0).description);
+                System.out.println("기온: "+result.main.temp+"도");
             } else {
                 System.out.println("API 요청 실패. 응답 코드: " + responseCode);
             }
