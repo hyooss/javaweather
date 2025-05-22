@@ -2,13 +2,19 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.*;
+import java.util.Scanner;
 
 import com.google.gson.Gson;
+import weatherresponse.WeatherResponse;
 
 public class Weather {
     public static void main(String[] args) {
         String apiKey="3ded9ce118161964953ca399889a5d1f";
-        String city="Seoul";
+        System.out.println("어떤 도시의 날씨가 궁금하신가요?");
+        Scanner scanner=new Scanner(System.in);
+        String city=scanner.nextLine();
+
 
         String urlString=String.format(
                 "https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=metric&lang=kr",

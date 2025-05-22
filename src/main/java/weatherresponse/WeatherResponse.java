@@ -1,3 +1,5 @@
+package weatherresponse;
+
 import java.util.*;
 
 public class WeatherResponse {
